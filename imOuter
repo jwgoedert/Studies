@@ -1,0 +1,16 @@
+//quick example of scope
+var im_outter = 10;
+    function yay(whatever){
+      im_outter /= 5;//divides im_outter by 5
+      whatever();//calls whatever
+    }
+console.log(1, im_outter);
+yay(something);
+console.log(2, im_outter);
+    function something(){
+      console.log(3, im_outter);
+      im_outter *= 20;
+      console.log(4, im_outter);
+      
+    }
+    something(yay);
