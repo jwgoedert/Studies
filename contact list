@@ -1,0 +1,63 @@
+function makeContact(id, nameFirst, nameLast) {
+    return{
+        id:id,
+        nameFirst:nameFirst,
+        nameLast:nameLast,
+        //fullName:(nameFirst + " " + nameLast)
+    }
+    
+} 
+function makeContactList() {
+    /*
+     * You need something here to hold contacts. See length api for a hint:
+     */
+    var contacts = [];
+    
+    return {
+        // we implemented the length api for you //
+        length: function(contacts) {
+          console.log(contacts.length);
+          return contacts.length;
+        },
+        addContact: function(contact){
+            contacts.push(contact);
+        },
+        removeContact: function(contact){
+            var index = contacts.indexOf(contact);
+            return contacts.splice(index, 1);   
+        },
+        find: function(fullName){
+            var fullSplit = fullName.split(' ');
+            for(var i = 0; i < contacts.length; i++){
+                if(contacts[i].firstName === fullSplit[0] && contacts[i].lastName === fullSplit[1]){
+                    return contacts[i];
+                }
+            }
+        },
+      list: contacts,
+      all: function(contacts){
+            var allContacts = "";
+            for(var i = 0; i < contacts.length; i++){
+                if(contacts[i] === contacts[contacts.length - 1]){
+                    return allContacts.concat(contacts[i].firstName, contacts[i].lastName);
+                }else{
+                    allContacts.concat(contacts[i].firstName, contacts[i].lastName, '\n');
+                }
+            }
+        return allContacts;
+        },
+    }
+}
+
+var me = makeContact(1, "James", "Goedert");
+var mead = makeContact(1, "Mead", "Goedert");
+var jacob = makeContact(1, "Jacob", "Goedert");
+var family = makeContactList();
+family.addContact(me);
+family.addContact(mead);
+family.addContact(jacob);
+console.log(("James Goedert").split(' '));
+console.log(family.list);
+console.log(family.all());
+var all = family.all;
+console.log(all);
